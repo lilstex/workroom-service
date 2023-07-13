@@ -1,0 +1,116 @@
+---
+paths:
+  /service/create-service:
+    post:
+      tags:
+        - SERVICE
+      summary: CREATE SERVICE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: Create service endpoint
+          description: This endpoint creates services
+          required: true
+          schema:
+            $ref: "#/definitions/createService"
+      responses:
+        200:
+          description: should return successful
+
+  /service/get-services:
+    get:
+      tags:
+        - SERVICE
+      summary: GET SERVICES ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+      responses:
+        200:
+          description: should return successful
+
+  /service/update-service:
+    put:
+      tags:
+        - SERVICE
+      summary: UPDATE SERVICE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: update service endpoint
+          description: This endpoint updates service
+          required: true
+          schema:
+            $ref: "#/definitions/updateService"
+      responses:
+        200:
+          description: should return successful
+  
+  /service/delete-service:
+    delete:
+      tags:
+        - SERVICE
+      summary: DELETE SERVICE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: body
+          name: Delete service endpoint
+          description: This endpoint deletes service
+          required: true
+          schema:
+            $ref: "#/definitions/deleteService"
+      responses:
+        200:
+          description: should return successful
+
+
+definitions:
+  createService:
+    type: object
+    properties:
+      serviceName:
+        type: string
+        default: Appliances
+      
+  updateService:
+    type: object
+    properties:
+      serviceId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+      serviceName:
+        type: string
+        default: Gadgets
+      
+  deleteService:
+    type: object
+    properties:
+      serviceId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+    

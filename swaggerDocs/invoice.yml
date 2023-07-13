@@ -1,0 +1,306 @@
+---
+paths:
+  /invoice/create-invoice:
+    post:
+      tags:
+        - INVOICE
+      summary: GENERATE INVOICE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: Generate invoice endpoint
+          description: This endpoint generates invoice
+          required: true
+          schema:
+            $ref: "#/definitions/createInvoice"
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/get-all-invoices:
+    get:
+      tags:
+        - INVOICE
+      summary: GET ALL INVOICES ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: query
+          name: page
+          type: number
+          default: 1
+          required: true
+      
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/get-invoice-by-invoice-number:
+    get:
+      tags:
+        - INVOICE
+      summary: GET INVOICE BY INVOICE NUMBER ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: query
+          name: invoiceNumber
+          type: string
+          default: APS142461
+          required: true
+          
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/delete-invoice:
+    delete:
+      tags:
+        - INVOICE
+      summary: DELETE INVOICE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: body
+          name: Delete invoice endpoint
+          description: This endpoint deletes invoice
+          required: true
+          schema:
+            $ref: "#/definitions/deleteInvoice"
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/get-number-of-invoices-and-clients:
+    get:
+      tags:
+        - INVOICE
+      summary: GET NUMBER OF INVOICES AND CLIENTS ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/get-all-clients:
+    get:
+      tags:
+        - CLIENTS
+      summary: GET ALL CLIENTS ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: query
+          name: page
+          type: number
+          default: 1
+          required: true
+      
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/update-client:
+    put:
+      tags:
+        - CLIENTS
+      summary: UPDATE CLIENT ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: update client endpoint
+          description: This endpoint updates client
+          required: true
+          schema:
+            $ref: "#/definitions/updateClient"
+      responses:
+        200:
+          description: should return successful
+  
+  /invoice/get-client-by-id:
+    get:
+      tags:
+        - CLIENTS
+      summary: GET CLIENT BY ID ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: query
+          name: clientId
+          type: string
+          default: 64afbc5266f8942f989f615e
+          required: true
+          
+      responses:
+        200:
+          description: should return successful
+
+  /invoice/delete-client:
+    delete:
+      tags:
+        - CLIENTS
+      summary: DELETE CLIENT ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: body
+          name: Delete client endpoint
+          description: This endpoint deletes client
+          required: true
+          schema:
+            $ref: "#/definitions/deleteClient"
+      responses:
+        200:
+          description: should return successful
+
+
+definitions:
+  createInvoice:
+    type: object
+    properties:
+      service:
+        type: string
+        default: Appliances
+      products:
+        type: array
+        items:
+          type: object
+          properties:
+            productName:
+              type: string
+              default: Refrigerator
+            description:
+              type: string
+              default: With double doors
+            rate:
+              type: string
+              default: 15000.00
+            quantity:
+              type: number
+              default: 2
+            amount:
+              type: string
+              default: 30000.00
+      invoiceTo:
+        type: object
+        properties:
+          name:
+            type: string
+            default: Dominic Clark
+          email:
+            type: string
+            default: dom@yahoo.com
+          phone:
+            type: string
+            default: +23490765424
+          address:
+            type: string
+            default: 45 Jabi lake
+      dueDate:
+        type: string
+        default: 21 March
+      issuedDate:
+        type: string
+        default: 15 March
+      signer:
+        type: string
+        default: Emmanuel Kings
+      signerRole:
+        type: string
+        default: Accountant
+      subTotal:
+        type: string
+        default: 30000.00
+      discount:
+        type: string
+        default: 700.00
+      tax:
+        type: string
+        default: 250.00
+      grandTotal:
+        type: string
+        default: 37950.00
+
+  updateClient:
+    type: object
+    properties:
+      clientId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+      email:
+        type: string
+        default: dom@yop.com
+      name:
+        type: string
+        default: Cynthia Morgan
+      address:
+        type: string
+        default: Life Camp Abuja
+      phone:
+        type: string
+        default: +234816276534
+      
+  deleteInvoice:
+    type: object
+    properties:
+      invoiceId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+      
+  deleteClient:
+    type: object
+    properties:
+      clientId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+    

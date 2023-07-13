@@ -1,0 +1,263 @@
+---
+paths:
+  /create-account:
+    post:
+      tags:
+        - AUTH
+      summary: ACCOUNT REGISTRATION ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user-account-registration
+          description: It enables all users to create an account
+          required: true
+          schema:
+            $ref: "#/definitions/userAccount"
+      responses:
+        201:
+          description: should return user account registration successful
+  
+  /login:
+    post:
+      tags:
+        - AUTH
+      summary: GENERAL LOGIN ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: login endpoint
+          description: It enables all accounts to login
+          required: true
+          schema:
+            $ref: "#/definitions/login"
+      responses:
+        200:
+          description: should return login successful
+ 
+  /send-password-reset-code:
+    post:
+      tags:
+        - AUTH
+      summary: FORGOT PASSWORD ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: send password reset code endpoint
+          description: This endpoint requests for password reset code
+          required: true
+          schema:
+            $ref: "#/definitions/passwordResetCode"
+      responses:
+        200:
+          description: should return successful
+  
+  /resend-email-verification-code:
+    post:
+      tags:
+        - AUTH
+      summary: RESEND EMAIL VERIFICATION ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Reend email verification code endpoint
+          description: This endpoint sends email verification code
+          required: true
+          schema:
+            $ref: "#/definitions/resendEmailVerificationCode"
+      responses:
+        200:
+          description: should return successful
+  
+  /validate-password-reset-code:
+    post:
+      tags:
+        - AUTH
+      summary: VALIDATE PASSWORD RESET ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: validate password reset code endpoint
+          description: This endpoint validates password reset code
+          required: true
+          schema:
+            $ref: "#/definitions/validatePasswordResetCode"
+      responses:
+        200:
+          description: should return successful
+ 
+  /update-password:
+    post:
+      tags:
+        - AUTH
+      summary: UPDATE PASSWORD ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: update password endpoint
+          description: This endpoint updates password
+          required: true
+          schema:
+            $ref: "#/definitions/updatePassword"
+      responses:
+        200:
+          description: should return successful
+ 
+  /update-account:
+    post:
+      tags:
+        - USER-ACCOUNT
+      summary: UPDATE ACCOUNT ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: update account endpoint
+          description: This endpoint updates account
+          required: true
+          schema:
+            $ref: "#/definitions/updateAccount"
+      responses:
+        200:
+          description: should return successful
+  
+  /get-user-details:
+    get:
+      tags:
+        - USER-ACCOUNT
+      summary: GET USER DETAILS ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+      responses:
+        200:
+          description: should return successful
+
+  /delete-user-account:
+    delete:
+      tags:
+        - USER-ACCOUNT
+      summary: DELETE USER ACCOUNT ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+      responses:
+        200:
+          description: should return successful
+
+
+definitions:
+  userAccount:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+      fullName:
+        type: string
+        default: John Doe
+      password:
+        type: string
+        default: password
+ 
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+      password:
+        type: string
+        default: password
+  
+  passwordResetCode:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+  
+  resendEmailVerificationCode:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+
+  validatePasswordResetCode:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+      passwordCode:
+        type: number
+        default: 123456
+  
+  updatePassword:
+    type: object
+    properties:
+      email:
+        type: string
+        default: lilstex@gmail.com
+      password:
+        type: string
+        default: password
+  
+  updateAccount:
+    type: object
+    properties:
+      companyName:
+        type: string
+        default: Work Room
+      address:
+        type: string
+        default: Life Camp Abuja
+      phone:
+        type: string
+        default: +234816276534
+      state:
+        type: string
+        default: Imo
+      city:
+        type: string
+        default: Owerri
+      zip:
+        type: string
+        default: 456309
+      tinNumber:
+        type: string
+        default: 566754352432
+      website:
+        type: string
+        default: https://bleautech.org
+      accNumber:
+        type: string
+        default: 0023454232
+      bankName:
+        type: string
+        default: UBA
+      logoUrl:
+        type: string
+        default: https://www.w3schools.com/w3images/avatar6.png
