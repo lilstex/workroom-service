@@ -8,6 +8,6 @@ RUN npm install --omit=dev
 
 USER node
 
-CMD [ "node", "src/app" ]
+CMD [ "node", "src/index" ]
 
 EXPOSE 2002
