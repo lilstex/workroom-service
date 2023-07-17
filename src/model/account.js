@@ -7,6 +7,12 @@ const account = new mongoose.Schema(
       unique: true,
       required: [true, "user must have email"],
     },
+    isGoogleSignIn: {
+      type: Boolean,
+    },
+    googleId: {
+      type: String,
+    },
     phone: {
       type: String,
     },

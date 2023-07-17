@@ -86,6 +86,60 @@ const login = async(req, res) => {
     }
 }
 
+const googleSignIn = async (params) => {
+    try {
+      const {
+        googleId,
+        email: _email,
+      } = params;
+     
+      const userExist = await Account.findOne({
+        email: _email,
+        isGoogleSignIn: true,
+        googleId: googleId,
+      });
+  
+      // user does not exist register the user.
+      if (!userExist) {
+        const newAccount = await Account.create({
+          email: _email,
+          isGoogleSignIn: true,
+          googleId: googleId,
+        });
+
+        const accountData = {
+            id: newAccount._id,
+            email: newAccount.email,
+            isGoogleSignIn: newAccount.isGoogleSignIn,
+        };
+
+        return Response.createdResponse('Account created successfully', accountData, res)
+      }
+  
+      const accountData = {
+        email: userExist.email,
+        googleId: userExist.googleId,
+        isGoogleSignIn: userExist.isGoogleSignIn,
+      }
+
+      //Generate JWT token
+      const token = jwt.sign(accountData, process.env.JWT_KEY, {expiresIn: process.env.TOKEN_VALIDATION_DURATION});
+      return Response.loginResponse(
+        token,
+        'Google signin successful', 
+        accountData,
+        res
+    );
+      
+    } catch (err) {
+        console.log(err);
+        return Response.serverError(
+            'Ooops...Something occured in Google signIn endpoint',
+            res, err
+        );
+    }
+}  
+
 const sendPasswordResetCode = async(req, res) => {
     try{
         const { email } = req.body;
@@ -299,4 +353,5 @@ module.exports = {
     getUserDetails,
     deleteUserAccount,
     resendEmailVerificationCode,
+    googleSignIn
 }

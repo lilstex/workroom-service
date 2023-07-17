@@ -12,6 +12,12 @@ module.exports = {
     password: Joi.string().required(),
   },
 
+  googleSignIn: {
+    token: Joi.string(),
+    googleId: Joi.any().required(),
+    email: Joi.string().email().required(),
+  },
+
   sendPasswordResetCode: {
     email: Joi.string().email().required(),
   },

@@ -36,6 +36,25 @@ paths:
         200:
           description: should return login successful
  
+   /signin-with-google:
+    post:
+      tags:
+        - AUTH
+      summary: GENERAL LOGIN ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: google signin endpoint
+          description: It enables users to signin or signup with google
+          required: true
+          schema:
+            $ref: "#/definitions/google"
+      responses:
+        200:
+          description: should return signin successful
+ 
+
   /send-password-reset-code:
     post:
       tags:
@@ -181,12 +200,22 @@ definitions:
         type: string
         default: password
  
-  login:
+  google:
     type: object
     properties:
       email:
         type: string
         default: lilstex@gmail.com
+      googleId:
+        type: string
+        default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+        default: johndoe@gmail.com
       password:
         type: string
         default: password

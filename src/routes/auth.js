@@ -18,7 +18,7 @@ routes.post(
 );
 
 routes.post(
-    "/signin-with-google",
+    "/login-with-google",
     validate(validator.googleSignIn),
     auth.googleSignIn
 );
