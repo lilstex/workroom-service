@@ -10,7 +10,7 @@ const swagger = {
       servers: [{ url: `http://localhost:${port}`}]
     },
   },
-  apis: ['./swaggerDocs/**/*.yml']
+  apis: ['./src/swaggerDocs/**/*.yml']
 };
 
 module.exports = swaggerJsDoc(swagger);

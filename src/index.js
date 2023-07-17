@@ -26,7 +26,7 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(
-  `Auth service is running on http://localhost:${port}/api-docs`
+  `WorkRoom service is running on http://localhost:${port}/api-docs`
   );
 }); 
 

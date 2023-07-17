@@ -36,7 +36,7 @@ paths:
         200:
           description: should return login successful
  
-   /signin-with-google:
+  /signin-with-google:
     post:
       tags:
         - AUTH
@@ -54,7 +54,6 @@ paths:
         200:
           description: should return signin successful
  
-
   /send-password-reset-code:
     post:
       tags:
