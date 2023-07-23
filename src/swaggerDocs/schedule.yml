@@ -1,0 +1,114 @@
+---
+paths:
+  /schedule/create-schedule:
+    post:
+      tags:
+        - SCHEDULE
+      summary: CREATE SCHEDULE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+
+        - in: body
+          name: Create schedule endpoint
+          description: This endpoint create schedules
+          required: true
+          schema:
+            $ref: "#/definitions/createSchedule"
+      responses:
+        200:
+          description: should return successful
+
+  /schedule/get-all-schedules:
+    get:
+      tags:
+        - SCHEDULE
+      summary: GET SCHEDULE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+      responses:
+        200:
+          description: should return successful
+
+  /schedule/get-schedule:
+    get:
+      tags:
+        - SCHEDULE
+      summary: GET SCHEDULE BY ID ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: query
+          name: scheduleId
+          type: string
+          default: 64afbc5266f8942f989f615e
+          required: true
+          
+      responses:
+        200:
+          description: should return successful
+
+  /schedule/delete-schedule:
+    delete:
+      tags:
+        - SCHEDULE
+      summary: DELETE SCHEDULE ENDPOINT
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          description: access token
+          required: true
+          default: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzIwODQxODB9.60qxpvDKlXV3x4-XDf2GRWgEkuSvL_XuCYPbn5jil-0
+        - in: body
+          name: Delete service endpoint
+          description: This endpoint deletes schedule
+          required: true
+          schema:
+            $ref: "#/definitions/deleteSchedule"
+      responses:
+        200:
+          description: should return successful
+
+
+definitions:
+  createSchedule:
+    type: object
+    properties:
+      title:
+        type: string
+        default: Board Meeting
+      date:
+        type: string
+        default: 12 May 2023
+      startTime: 
+        type: string
+        default: 10am
+      endTime:
+        type: string
+        default: 12pm
+        
+  deleteSchedule:
+    type: object
+    properties:
+      scheduleId:
+        type: string
+        default: 64afbc5266f8942f989f615e
+    

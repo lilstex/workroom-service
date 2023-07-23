@@ -3,4 +3,5 @@ module.exports = {
     Invoice: require("./invoice"),
     Client: require("./client"),
     Service: require("./service"),
+    Schedule: require("./schedule"),
 }
